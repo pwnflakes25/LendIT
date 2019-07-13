@@ -9,6 +9,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { firebaseConfig } from '../environments/firebase.config';
 import * as firebase from 'firebase/app';
+import {MatTabsModule} from '@angular/material/tabs';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +23,9 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 import {AuthService} from "./auth/auth.service";
 import {DataStorageService} from "./shared/data-storage.service";
+import { ProfileComponent } from './profile/profile.component';
+import {ProfileService} from "./profile/profile.service";
+import { ProfileEditComponent } from './profile/profile-edit/profile-edit.component';
 
 @NgModule({
   declarations: [
@@ -32,13 +36,16 @@ import {DataStorageService} from "./shared/data-storage.service";
     ItemComponent,
     PostMakerComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileComponent,
+    ProfileEditComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     MatDialogModule,
+    MatTabsModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
@@ -46,7 +53,7 @@ import {DataStorageService} from "./shared/data-storage.service";
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule // imports firebase/auth, only needed for auth features
   ],
-  providers: [PostService, AuthService, DataStorageService],
+  providers: [PostService, AuthService, DataStorageService, ProfileService],
   bootstrap: [AppComponent],
   entryComponents: [SignupComponent, LoginComponent]
 })

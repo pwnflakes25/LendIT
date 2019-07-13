@@ -4,6 +4,7 @@ import {PostComponent} from './post/post.component';
 import {ItemComponent} from './item/item.component';
 import {PostMakerComponent} from "./post/post-maker/post-maker.component";
 import {SignupComponent} from "./auth/signup/signup.component";
+import {ProfileComponent} from "./profile/profile.component";
 
 const routes: Routes = [
 {
@@ -21,6 +22,10 @@ component:PostComponent
 {
   path: 'postEditor',
   component: PostMakerComponent
+},
+{
+  path: 'profile',
+  component: ProfileComponent
 }
 ];
 
