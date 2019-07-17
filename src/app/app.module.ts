@@ -10,6 +10,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { firebaseConfig } from '../environments/firebase.config';
 import * as firebase from 'firebase/app';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatButtonModule} from '@angular/material/button';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -46,6 +47,7 @@ import { ProfileEditComponent } from './profile/profile-edit/profile-edit.compon
     HttpClientModule,
     MatDialogModule,
     MatTabsModule,
+    MatButtonModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
