@@ -27,6 +27,7 @@ import {DataStorageService} from "./shared/data-storage.service";
 import { ProfileComponent } from './profile/profile.component';
 import {ProfileService} from "./profile/profile.service";
 import { ProfileEditComponent } from './profile/profile-edit/profile-edit.component';
+import {AuthGuardService} from "./auth/auth-guard.service"
 
 @NgModule({
   declarations: [
@@ -55,7 +56,7 @@ import { ProfileEditComponent } from './profile/profile-edit/profile-edit.compon
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule // imports firebase/auth, only needed for auth features
   ],
-  providers: [PostService, AuthService, DataStorageService, ProfileService],
+  providers: [PostService, AuthService, DataStorageService, ProfileService, AuthGuardService],
   bootstrap: [AppComponent],
   entryComponents: [SignupComponent, LoginComponent]
 })

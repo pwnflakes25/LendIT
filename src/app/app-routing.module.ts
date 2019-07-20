@@ -5,6 +5,7 @@ import {ItemComponent} from './item/item.component';
 import {PostMakerComponent} from "./post/post-maker/post-maker.component";
 import {SignupComponent} from "./auth/signup/signup.component";
 import {ProfileComponent} from "./profile/profile.component";
+import {AuthGuardService} from "./auth/auth-guard.service";
 
 const routes: Routes = [
 {
@@ -25,7 +26,8 @@ component:PostComponent
 },
 {
   path: 'profile',
-  component: ProfileComponent
+  component: ProfileComponent,
+  canActivate: [AuthGuardService]
 }
 ];
 
