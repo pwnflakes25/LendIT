@@ -113,7 +113,6 @@ export class PostService {
    if(post.userID) {
      this.postCollection.add(post)
      .then(result => {
-       console.log(result)
        console.log("success")
      })
      .catch(err => {
@@ -135,7 +134,6 @@ deletePost(ref) {
       console.log("Message Deleted Successfully")
       return "Delete Success"
     })
-    this.router.navigate(['/profile'])
   }
 
 

@@ -47,13 +47,11 @@ getCurrentUserDetail() {
    createUser(email: string, password: string) {
      firebase.auth().createUserWithEmailAndPassword(email, password)
      .then(cred => {
-       console.log(cred)
        this.router.navigate(["/"])
      })
      .catch(function(error) {
       var errorCode = error.code;
       var errorMessage = error.message;
-      console.log(errorMessage)
   });
    }
 
@@ -62,7 +60,6 @@ getCurrentUserDetail() {
    logInUser(email: string, password: string) {
          firebase.auth().signInWithEmailAndPassword(email, password)
          .then(cred => {
-           console.log(cred)
            this.router.navigate(["/"])
          })
          .catch(function(error) {

@@ -18,7 +18,6 @@ export class LoginComponent implements OnInit {
   }
 
   onSignupEvent() {
-    console.log("event emitted")
     this.openEvent.emit()
   }
 

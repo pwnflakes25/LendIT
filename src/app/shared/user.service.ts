@@ -46,7 +46,6 @@ export class UserService {
     ),
     );
     this.userFilterBehavior.next(userID)
-    console.log(this.usersData)
     return this.usersData;
 }
 

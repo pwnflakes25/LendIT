@@ -14,11 +14,6 @@ posts: PostModel[] = [];
   constructor(private postService: PostService, private authService: AuthService) { }
 
   ngOnInit() {
-    // this.postService.getPosts().subscribe(values => {
-    //   for(let i=0; i < values.length; i++) {
-    //     this.posts.push(values[i])
-    //   }
-    // })
     this.posts = this.postService.getPosts();
   }
 
