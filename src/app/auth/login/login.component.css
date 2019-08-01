@@ -8,7 +8,7 @@ z-index: 100;
 
 
 
-.card{
+.logIncard{
 height: 370px;
 margin-top: auto;
 margin-bottom: auto;
@@ -27,9 +27,7 @@ color: white;
 cursor: pointer;
 }
 
-.card-header h3{
-color: white;
-}
+
 
 .social_icon{
 position: absolute;
