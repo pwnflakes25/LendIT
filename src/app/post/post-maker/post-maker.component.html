@@ -1,0 +1,65 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+    <h1 class="well bigBox">New Post</h1>
+	<div class="col-lg-12 well bigBox" >
+	<div class="row bigBox">
+				<form [formGroup]="newPostForm" (ngSubmit)="onSubmit()">
+					<div class="col-sm-12">
+
+            <div class="row">
+							<div class="col-sm-6 form-group">
+								<label>Image</label>
+                <div class="card bg-dark text-white">
+                  <input type="file" #filePicker style="display: none;" (change)="onFileSelected($event)" name="image" />
+                  <img class="card-img img-responsive" [src]="imageDisplay" alt="Card image" style="cursor:pointer" (click)="filePicker.click()">
+                  <!-- <div class="card-img-overlay" *ngIf="imageActive === false" (mouseenter)="onHover($event)">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Add Image to give your audience a better idea of your item</p>
+                  </div> -->
+                </div>
+							</div>
+						</div>
+
+
+						<div class="row">
+							<div class="col-sm-6 form-group">
+								<label>Item Title</label>
+								<input type="text" placeholder="Enter Post Title here.." class="form-control" formControlName="name">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label>Item Description</label>
+							<textarea placeholder="Enter Item Description Here.." rows="3" class="form-control" formControlName="description"></textarea>
+						</div>
+
+						<div class="row">
+							<div class="col-sm-4 form-group">
+								<label>Price</label>
+								<input type="number" placeholder="Enter your price" class="form-control" formControlName="price">
+							</div>
+							<div class="col-sm-4 form-group">
+								<label>Per?</label>
+                <select id="inputState" class="form-control" formControlName="priceDuration">
+                  <option selected>Choose...</option>
+                  <option>Hour</option>
+                  <option>Day</option>
+                  <option>Week</option>
+                </select>
+							</div>
+							<div class="col-sm-4 form-group">
+								<label>Zip</label>
+								<input type="text" placeholder="Enter Zip Code Here.." class="form-control">
+							</div>
+						</div>
+
+
+					<button type="submit" class="btn btn-lg btn-info">Submit</button>
+					</div>
+				</form>
+				</div>
+	</div>
+	</div>

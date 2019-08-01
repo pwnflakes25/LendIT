@@ -1,0 +1,73 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+
+<div class="container">
+	<div class="row d-flex justify-content-center">
+		<form *ngIf="profileForm && userProfile" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+	 <!-- Image Section -->
+			<div class="">
+					<div class="profile-img">
+							<img [src]="defaultDisplayPic" alt="" style="max-height: 15rem;"/>
+							<div class="file btn btn-lg btn-primary" *ngIf="edit">
+									Change Photo
+									<input type="file" name="file"/>
+							</div>
+					</div>
+			</div>
+			<br>
+
+			<!-- name -->
+			<div class="row">
+				<div class="form-group input-group">
+					<div class="input-group-prepend">
+							<span class="input-group-text"> <i class="fa fa-user"></i> </span>
+					 </div>
+							 <input class="form-control" placeholder="Full name" type="text" formControlName="name">
+					 </div>
+			</div>
+
+
+      <!-- user name -->
+			<div class="row">
+				<div class="form-group input-group">
+				 <div class="input-group-prepend">
+					 <span class="input-group-text"> <i class="fas fa-smile"></i> </span>
+				</div>
+						<input class="form-control" placeholder="User Name" formControlName="userName">
+				</div>
+			</div>
+
+
+      <!-- contact -->
+			<div class="row">
+				<div class="form-group input-group">
+				 <div class="input-group-prepend">
+					 <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+			 </div>
+				 <input class="form-control" placeholder="Phone number" type="text" formControlName="contact">
+				</div>
+			</div>
+
+	     <!-- Address -->
+			 <div class="row">
+				 <div class="form-group input-group">
+					<div class="input-group-prepend">
+						<span class="input-group-text"> <i class="fas fa-map-marker-alt"></i> </span>
+				 </div>
+						 <input class="form-control" placeholder="Address" formControlName="address">
+				 </div>
+			 </div>
+
+
+			<div class="row">
+				<div class="form-group">
+				 <button type="submit" mat-flat-button color="primary" style="margin-right: 1rem;">Save</button>
+				 <button mat-flat-button color="warn" type="button" name="button"  (click)="onCancel()">Cancel</button>
+			 </div>
+			</div>
+
+
+		</form>
+	</div>
+</div>

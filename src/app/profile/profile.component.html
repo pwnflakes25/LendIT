@@ -1,0 +1,136 @@
+
+<div class="container-fluid emp-profile">
+
+<app-profile-edit *ngIf="edit" (cancelAction)="onCancel()"></app-profile-edit>
+
+            <form *ngIf="!edit">
+              <h1 class="title">My Profile</h1>
+              <div class="row d-flex justify-content-center">
+
+
+
+
+                      <div class="col-md-5"   style="margin-bottom: 2rem;">
+                          <div class="d-flex justify-content-start profile-img" >
+                              <img [src]="defaultDisplayPic" alt=""/>
+                          </div>
+                      </div>
+
+                      <br>
+
+                      <div class="col-md-2">
+                          <input type="submit" (click)="onEdit()" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+                      </div>
+
+                      <div class="col-md-8">
+                          <div class="profile-head">
+
+                            <!-- Header -->
+                            <div *ngIf="!edit && user">
+                              <h5>
+                                  {{user.name}}
+                              </h5>
+                              <h6>
+                                {{user.userName}}
+                              </h6>
+                              <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+                            </div>
+
+
+                           <!-- Mat Tabs -->
+                            <mat-tab-group dynamicHeight="true;" id="myTab" >
+
+                              <mat-tab label="About" class="nav-link"  >
+
+                                <div>
+                                  <button mat-raised-button color="accent" type="button" name="button" (click)="refreshData()" *ngIf="!user">Refresh</button>
+                                </div>
+
+                                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab" *ngIf="user" style="margin-top: 1rem;">
+                                         <div class="row">
+                                             <div class="col-md-6">
+                                                 <label>Name</label>
+                                             </div>
+                                             <div class="col-md-6">
+                                                 <p>{{user.name}}</p>
+                                             </div>
+                                         </div>
+                                         <div class="row">
+                                             <div class="col-md-6">
+                                                 <label>User Name</label>
+                                             </div>
+                                             <div class="col-md-6">
+                                                 <p>{{user.userName}}</p>
+                                             </div>
+                                         </div>
+                                         <div class="row">
+                                             <div class="col-md-6">
+                                                 <label>Email</label>
+                                             </div>
+                                             <div class="col-md-6">
+                                                 <p>{{user.email}}</p>
+                                             </div>
+                                         </div>
+                                         <div class="row">
+                                             <div class="col-md-6">
+                                                 <label>Phone</label>
+                                             </div>
+                                             <div class="col-md-6">
+                                                 <p>{{user.contact}}</p>
+                                             </div>
+                                         </div>
+                                         <div class="row">
+                                             <div class="col-md-6">
+                                                 <label>Address</label>
+                                             </div>
+                                             <div class="col-md-6">
+                                                 <p>{{user.address}}</p>
+                                             </div>
+                                         </div>
+                                    </div>
+                              </mat-tab>
+
+                              <mat-tab label="Post" class="nav-link" >
+                                <div class="row" *ngIf="userPosts.length >= 0">
+                                  <div class="col-md-5 col-xs-1" *ngFor="let post of userPosts; let i = index">
+                                    <div  class="card" style="margin-right: 1rem; margin-bottom: 2rem; padding: 0px; margin-top: 1rem; border-weight: medium;" >
+                                      <img class="card-img-top cardImg" style="max-height: 10rem; width: 100%" [src]="post.imagePath" alt="Card image cap">
+
+                                      <div class="row">
+                                        <div class="col">
+                                         <div ngbDropdown class="d-inline-block">
+                                           <button class="btn btn-outline-secondary justify-content-end" style="border: none;" id="dropdownBasic1" ngbDropdownToggle><fa-icon icon="cog"></fa-icon></button>
+                                           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                             <button ngbDropdownItem (click)="onEditPost(i)">Edit Post</button>
+                                             <button ngbDropdownItem (click)="onDeletePost(i)">Delete Post</button>
+                                           </div>
+                                         </div>
+                                        </div>
+                                      </div>
+
+                                      <div class="card-body">
+                                        <h5 class="card-title">{{post.name}}</h5>
+                                        <p class="card-text" style="color: green">
+                                         {{post.price}} TL
+                                       </p>
+                                       <p class="card-text">{{post.description}}</p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="refreshButton" *ngIf="userPosts.length === 0">
+                                  <button class="btn btn-primary" name="button" (click)="returnPost()">Refresh</button>
+                                </div>
+
+                              </mat-tab>
+
+                            </mat-tab-group>
+
+                          </div>
+                      </div>
+
+                  </div>
+
+            </form>
+        </div>

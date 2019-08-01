@@ -1,0 +1,23 @@
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 1rem;
+}
+
+#price {
+  color: green;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 0.3fr 2.6fr 1.5fr 0.4fr;
+  grid-template-rows: 0.3fr 1.7fr 0.2fr 1.8fr;
+  grid-template-areas: ". . . ." ". Image Card-Details ." ". . . ." ". Item-Details . .";
+}
+
+.Image { grid-area: Image; }
+
+.Card-Details { grid-area: Card-Details; }
+
+.Item-Details { grid-area: Item-Details; }
+
+.Title { grid-area: Title; }

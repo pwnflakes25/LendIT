@@ -1,0 +1,51 @@
+<div class="container wrapper">
+
+  <div>
+    <h1 class="my-4">{{selectedPost.name}}</h1>
+  </div>
+
+  <div class="row">
+    <!-- Image Space Below -->
+     <div class="col-md-8">
+       <img class="img-fluid image" [src]="selectedPost.imagePath" alt="" style="min-width: 600px; max-height:400px;">
+      <br>
+       <div>
+         <h1 id="price">{{selectedPost.price}} TL <span style="font-size: 20px;"> / {{selectedPost.priceDuration}}</span></h1>
+         <h3 class="my-3">Description</h3>
+         <p>{{selectedPost.description}}</p>
+         <h3 class="my-3">Details</h3>
+         <ul style="list-style:none">
+         </ul>
+       </div>
+     </div>
+
+     <!-- Portfolio Item Row -->
+     <div class="col-md-4">
+       <div>
+           <div class="card" style="width: 18rem;">
+             <img class="card-img-top" [src]="defaultDisplayPic" alt="Card image cap">
+             <div class="card-body">
+                 <h5 class="card-title">Lender's Detail</h5>
+                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+             </div>
+             <ul class="list-group list-group-flush">
+                 <li class="list-group-item"><h5>User Name</h5> {{user.userName}} </li>
+                 <li class="list-group-item"><h5>Contact Detail</h5>{{user.contact}} </li>
+                 <li class="list-group-item"><h5>User Address</h5> {{user.address}}</li>
+                 <li class="list-group-item">Other Detail:  </li>
+             </ul>
+             <div class="card-body">
+                 <a href="#" class="card-link">Card link</a>
+                 <a href="#" class="card-link">Another link</a>
+             </div>
+           </div>
+       </div>
+     </div>
+
+  </div>
+
+
+
+
+
+  </div>
