@@ -43,14 +43,14 @@ defaultDisplayPic = "https://theimag.org/wp-content/uploads/2015/01/user-icon-pn
      this.userProfile = this.ps.getProfileToEdit();
      console.log(this.userProfile)
 
-     if (this.userProfile) {
-       this.profileForm.patchValue({
-               name: this.userProfile.name || "",
-               userName: this.userProfile.userName || "",
-               contact: this.userProfile.contact || "",
-               address: this.userProfile.address || ""
-       })
-     }
+     // if (this.userProfile) {
+     //   this.profileForm.patchValue({
+     //           name: this.userProfile.name || "",
+     //           userName: this.userProfile.userName || "",
+     //           contact: this.userProfile.contact || "",
+     //           address: this.userProfile.address || ""
+     //   })
+     // }
 
       //Retrieve user Reference for the document of their profile
       const check = this.userService.getUserRefById(user.uid).pipe(map(res => {
