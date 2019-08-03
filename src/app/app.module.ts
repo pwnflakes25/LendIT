@@ -13,6 +13,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatButtonModule} from '@angular/material/button';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -54,6 +55,7 @@ import {AuthGuardService} from "./auth/auth-guard.service";
     NgbModule,
     FontAwesomeModule,
     MatButtonModule,
+    MatSnackBarModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,

@@ -8,11 +8,8 @@
 	 <!-- Image Section -->
 			<div class="">
 					<div class="profile-img">
-							<img [src]="defaultDisplayPic" alt="" style="max-height: 15rem;"/>
-							<div class="file btn btn-lg btn-primary" *ngIf="edit">
-									Change Photo
-									<input type="file" name="file"/>
-							</div>
+						  <img class="card-img img-responsive" [src]="defaultDisplayPic" alt="Card image" style="cursor:pointer" (click)="picPicker.click()">
+									<input type="file" name="image" style="display: none;" (change)="onFileSelected($event)" #picPicker/>
 					</div>
 			</div>
 			<br>

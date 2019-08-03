@@ -4,6 +4,7 @@ import {LoginComponent} from "../auth/login/login.component";
 import {SignupComponent} from "../auth/signup/signup.component";
 import {AuthService} from "../auth/auth.service";
 import {Subject} from "rxjs";
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 
 @Component({
@@ -16,7 +17,7 @@ import {Subject} from "rxjs";
 export class HeaderComponent implements OnInit {
 isAuthenticated;
 
-  constructor(private dialog: MatDialog, private authService: AuthService) {
+  constructor(private dialog: MatDialog, private authService: AuthService, private _snackBar: MatSnackBar) {
      this.isAuthenticated = this.authService.isAuth();
   }
 
@@ -52,7 +53,10 @@ isAuthenticated;
 
   onSignup() {
     console.log("SignUp")
-    const dialogRef = this.dialog.open(SignupComponent)
+    const dialogRef = this.dialog.open(SignupComponent);
+    const sub1 = dialogRef.componentInstance.successEvent.subscribe(() => {
+      dialogRef.close();
+    })
     dialogRef.afterClosed().subscribe(result => {
      console.log('The dialog was closed');
    });
@@ -61,5 +65,13 @@ isAuthenticated;
   onLogout() {
     console.log("logging out")
     this.authService.onSignOut();
+    this.openSnackBar("Logged Out Successfully", "Dismiss");
   }
+
+  openSnackBar(message: string, action: string) {
+  this._snackBar.open(message, action, {
+    duration: 2000,
+  });
+}
+
 }

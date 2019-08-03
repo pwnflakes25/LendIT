@@ -44,27 +44,34 @@ getCurrentUserDetail() {
 
 
 //signing user up
-   createUser(email: string, password: string) {
-     firebase.auth().createUserWithEmailAndPassword(email, password)
+  async createUser(email: string, password: string) {
+     let result;
+     return result = await firebase.auth().createUserWithEmailAndPassword(email, password)
      .then(cred => {
+       return true;
        this.router.navigate(["/"])
      })
      .catch(function(error) {
       var errorCode = error.code;
       var errorMessage = error.message;
+      return false;
   });
-   }
+  }
 
 
  //logging user in
-   logInUser(email: string, password: string) {
-         firebase.auth().signInWithEmailAndPassword(email, password)
+   async logInUser(email: string, password: string) {
+      let result;
+      return result = await firebase.auth().signInWithEmailAndPassword(email, password)
          .then(cred => {
+           return true;
            this.router.navigate(["/"])
          })
          .catch(function(error) {
           var errorCode = error.code;
           var errorMessage = error.message;
+          console.log(errorCode);
+          return false;
       });
    }
 

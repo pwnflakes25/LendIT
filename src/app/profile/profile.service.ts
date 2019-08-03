@@ -21,7 +21,8 @@ export class ProfileService {
     userName: "",
     contact: "",
     email: "",
-    address: ""
+    address: "",
+    imagePath:""
   }
   userData;
   profileToEdit;
@@ -63,12 +64,13 @@ export class ProfileService {
      const ePromise = val => new Promise(resolve => resolve(val));
      const check = this.userService.getUserDataById(id).pipe(concatMap(val => ePromise(val)));
      check.subscribe(result => {
-       if(result[0].name) {
+       if(result) {
          this.userProfile.name = result[0].name;
          this.userProfile.userName = result[0].userName;
          this.userProfile.contact = result[0].contact;
          this.userProfile.email = result[0].email;
         this.userProfile.address = result[0].address;
+        this.userProfile.imagePath = result[0].imagePath;
        }
        else {
          this.userProfile.email = this.userData.email;
