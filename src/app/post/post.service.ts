@@ -67,8 +67,12 @@ export class PostService {
 
 
 //general post retrieval ============>
+    // getPosts() {
+    //   return this.posts;
+    // }
+
     getPosts() {
-      return this.posts;
+      return this.postList;
     }
 
     getPost(id: number) {
