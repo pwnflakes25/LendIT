@@ -40,14 +40,6 @@ export class PostService {
 
 
   constructor(private http: HttpClient, private authService: AuthService, private afs: AngularFirestore, private router: Router) {
-    this.postCollection = this.afs.collection<PostModel>('postList');
-    this.postList = this.postCollection.valueChanges();
-    this.postList.subscribe(values => {
-      for(let i=0; i < values.length; i++) {
-        this.posts[i] = values[i];
-      }
-    })
-
     this.nameFilter$ = new BehaviorSubject(null);
     this.idFilter$ = new BehaviorSubject(null);
     this.queriedPostRef$ = combineLatest(
@@ -72,6 +64,13 @@ export class PostService {
     // }
 
     getPosts() {
+      this.postCollection = this.afs.collection<PostModel>('postList');
+      this.postList = this.postCollection.valueChanges();
+      this.postList.subscribe(values => {
+        for(let i=0; i < values.length; i++) {
+          this.posts[i] = values[i];
+        }
+      })
       return this.postList;
     }
 
