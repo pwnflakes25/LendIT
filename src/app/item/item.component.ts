@@ -37,7 +37,6 @@ user = {
   .subscribe((params) => {
    this.id = +params['id'];
    this.selectedPost = this.postService.getPost(this.id);
-   console.log(this.selectedPost)
    const ePromise = val => new Promise(resolve => resolve(val));
    const check = this.userService.getUserDataById(this.selectedPost.userID).pipe(concatMap(val => ePromise(val)));
    this.settingUser = check.subscribe(user => {

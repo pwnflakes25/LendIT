@@ -61,17 +61,15 @@ getCurrentUserDetail() {
 
  //logging user in
    async logInUser(email: string, password: string) {
-      let result;
-      return result = await firebase.auth().signInWithEmailAndPassword(email, password)
+     let result;
+     return result = await firebase.auth().signInWithEmailAndPassword(email, password)
          .then(cred => {
-           return true;
-           this.router.navigate(["/"])
+           return [true, "Logged In Successfully"];
          })
          .catch(function(error) {
           var errorCode = error.code;
           var errorMessage = error.message;
-          console.log(errorCode);
-          return false;
+          return [false, errorMessage];
       });
    }
 

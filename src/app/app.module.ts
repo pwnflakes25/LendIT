@@ -31,6 +31,7 @@ import { ProfileComponent } from './profile/profile.component';
 import {ProfileService} from "./profile/profile.service";
 import { ProfileEditComponent } from './profile/profile-edit/profile-edit.component';
 import {AuthGuardService} from "./auth/auth-guard.service";
+import { UserInfoThumbnailComponent } from './post/user-info-thumbnail/user-info-thumbnail.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import {AuthGuardService} from "./auth/auth-guard.service";
     SignupComponent,
     LoginComponent,
     ProfileComponent,
-    ProfileEditComponent
+    ProfileEditComponent,
+    UserInfoThumbnailComponent
   ],
   imports: [
     BrowserModule,

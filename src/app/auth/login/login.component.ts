@@ -23,14 +23,15 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-   let login = this.authService.logInUser(form.value.email, form.value.password)
-   console.log(login);
-    if (login) {
-      this.openSnackBar("Login Successful", "dismiss");
-      this.successEvent.emit();
-    } else {
-        this.openSnackBar("Oops, something went wrong, try again!", "dismiss")
-    }
+   let login = this.authService.logInUser(form.value.email, form.value.password).then(res => {
+     if (res[0]) {
+       this.openSnackBar("Logged In Successfully", "dismiss");
+       this.successEvent.emit();
+     } else {
+         this.openSnackBar(res[1], "dismiss");
+         return;
+     }
+   })
   }
 
   openSnackBar(message: string, action: string) {
