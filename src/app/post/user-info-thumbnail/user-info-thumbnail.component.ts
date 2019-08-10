@@ -1,7 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {UserService} from "../../shared/user.service";
-import {Subscription} from "rxjs";
-import {concatMap} from "rxjs/operators";
+import {Subscription, Observable} from "rxjs";
+import {concatMap, take} from "rxjs/operators";
+import {UserModel} from "../../shared/user.model";
+
+
 
 @Component({
   selector: 'app-user-info-thumbnail',
@@ -10,21 +13,21 @@ import {concatMap} from "rxjs/operators";
 })
 export class UserInfoThumbnailComponent implements OnInit {
 @Input() userID;
-displayPic: any = "https://cdn4.iconfinder.com/data/icons/social-communication/142/add_photo-512.png";
-displayName: any;
-userName: any = "Random Name";
 userSub: Subscription;
+userData$: Observable<{}[]>;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {
+
+  }
 
   ngOnInit() {
-    // this.userService.getUserDataById(this.userID).subscribe(user => {
-    //   console.log(this.userName);
-    //   this.userName = user.userName;
-    //   if (user.imagePath) {
-    //     this.displayPic = user.imagePath;
-    //   }
-    // })
+    this.fetchData()
+    console.log(this.userData$)
+  }
+
+
+  fetchData() {
+    this.userData$ = this.userService.getUserDataById(this.userID);
   }
 
 }

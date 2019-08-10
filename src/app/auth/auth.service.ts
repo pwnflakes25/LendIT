@@ -7,6 +7,7 @@ import {Subscription, Observable} from "rxjs";
 import {Router} from "@angular/router";
 import {AngularFireAuth} from "@angular/fire/auth";
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -44,12 +45,12 @@ getCurrentUserDetail() {
 
 
 //signing user up
-  async createUser(email: string, password: string) {
+  async createUser(email: string, password: string, username: string) {
      let result;
      return result = await firebase.auth().createUserWithEmailAndPassword(email, password)
      .then(cred => {
        return true;
-       this.router.navigate(["/"])
+       this.router.navigate(["/profile"])
      })
      .catch(function(error) {
       var errorCode = error.code;

@@ -49,7 +49,7 @@ export class UserService {
     return this.usersData;
 }
 
-getUserDataById(userID) {
+ getUserDataById(userID) {
  this.usersData = this.userFilterBehavior
  .pipe(
    switchMap(

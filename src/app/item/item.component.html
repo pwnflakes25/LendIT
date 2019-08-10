@@ -6,21 +6,20 @@
 
   <div class="row">
     <!-- Image Space Below -->
-     <div class="col-md-8">
-       <img class="img-fluid image" [src]="selectedPost.imagePath" alt="" style="min-width: 600px; max-height:400px;">
+     <div class="col-md-8 col-s-12">
+       <img class="imageSetting" [src]="selectedPost.imagePath" alt="" style="min-width: 600px; max-height:400px;">
       <br>
        <div>
          <h1 id="price">{{selectedPost.price}} TL <span style="font-size: 20px;"> / {{selectedPost.priceDuration}}</span></h1>
          <h3 class="my-3">Description</h3>
          <p>{{selectedPost.description}}</p>
-         <h3 class="my-3">Details</h3>
          <ul style="list-style:none">
          </ul>
        </div>
      </div>
 
      <!-- Portfolio Item Row -->
-     <div class="col-md-4">
+     <div class="col-md-4 col-s-12">
        <div>
            <div class="card" style="width: 18rem;">
              <img class="card-img-top" [src]="defaultDisplayPic" alt="Card image cap">

@@ -5,7 +5,9 @@ import {SignupComponent} from "../auth/signup/signup.component";
 import {AuthService} from "../auth/auth.service";
 import {Subject} from "rxjs";
 import {MatSnackBar} from '@angular/material/snack-bar';
-
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -16,8 +18,11 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 @Injectable()
 export class HeaderComponent implements OnInit {
 isAuthenticated;
+faUserCircle = faUserCircle;
+faPlusCircle = faPlusCircle;
 
   constructor(private dialog: MatDialog, private authService: AuthService, private _snackBar: MatSnackBar) {
+     library.add(faUserCircle);
      this.isAuthenticated = this.authService.isAuth();
   }
 

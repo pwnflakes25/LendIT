@@ -14,7 +14,7 @@ import { map, concatMap} from "rxjs/operators";
 export class ItemComponent implements OnInit, OnDestroy{
 selectedPost : PostModel;
 settingUser: Subscription;
-defaultDisplayPic = "https://theimag.org/wp-content/uploads/2015/01/user-icon-png-person-user-profile-icon-20.png";
+defaultDisplayPic: any = "https://theimag.org/wp-content/uploads/2015/01/user-icon-png-person-user-profile-icon-20.png";
 id: number;
 user = {
   name: null,
@@ -45,6 +45,9 @@ user = {
      this.user.contact = user[0].contact;
      this.user.email = user[0].email;
      this.user.address = user[0].address;
+     if(user[0].imagePath) {
+       this.defaultDisplayPic = user[0].imagePath;
+     }
    })
  })
 
