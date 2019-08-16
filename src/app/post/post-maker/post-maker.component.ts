@@ -7,7 +7,7 @@ import {Router, ActivatedRoute} from "@angular/router";
 import {FormGroup, FormControl, Validators, FormArray} from "@angular/forms";
 import {AuthService} from "../../auth/auth.service";
 import {Subscription} from 'rxjs';
-
+import {FormBuilder} from "@angular/forms";
 @Component({
   selector: 'app-post-maker',
   templateUrl: './post-maker.component.html',
@@ -23,13 +23,17 @@ export class PostMakerComponent implements OnInit, OnDestroy {
   isEdit = false;
   postEdit: PostModel;
   fetchingPostRefSub: Subscription;
+  categories: Array<String> = [ "Electronics", "Clothing", "Sport Equipments", "Gadgets", "Vehicles", "Office Items", "Work Tools", "School Supplies" ]
+  selectedTags = [];
+  tagsError: boolean = true;
 
   constructor(
       private http: HttpClient,
       private postService: PostService,
       private router: Router,
       private authService: AuthService,
-      private route: ActivatedRoute
+      private route: ActivatedRoute,
+      private _fb: FormBuilder
     ) { }
 
   ngOnInit() {
@@ -40,12 +44,11 @@ export class PostMakerComponent implements OnInit, OnDestroy {
       'description': new FormControl(null, Validators.required),
       'imagePath': new FormControl(null, Validators.required),
       'userID': new FormControl(null),
-      'tags': new FormArray([])
+      'tags': this.addTagsControls(),
+      'categories': new FormControl(null),
+      'date': new FormControl(null)
     });
     this.userID = this.authService.getUserID();
-    this.newPostForm.patchValue({userID: this.userID});
-    this.newPostForm.patchValue({date: formatDate(new Date(), 'yyyy/MM/dd', 'en')});
-    this.newPostForm.get('userID').updateValueAndValidity();
     this.route.params.subscribe((params) => {
       if (params['edit'] === "edit") {
         this.isEdit = true;
@@ -57,13 +60,58 @@ export class PostMakerComponent implements OnInit, OnDestroy {
           priceDuration: this.postEdit.priceDuration,
           description: this.postEdit.description,
           imagePath: this.postEdit.imagePath,
-          date: formatDate(new Date(), 'yyyy/MM/dd', 'en')
+          categories: this.postEdit.categories,
+          date: Date.now()
         })
       }
     })
   }
 
+ addTagsControls() {
+   const arr = this.categories.map(element => {
+     return this._fb.control(false);
+   })
+   return this._fb.array(arr);
+ }
+
+ get tagsArray() {
+   return <FormArray>this.newPostForm.get('tags');
+ }
+
+ getCategoriesArray() {
+   return <FormArray>this.newPostForm.get('categories');
+ }
+
+ checkTagsTouched() {
+   let flg = false;
+   this.tagsArray.controls.forEach(control => {
+     if(control.touched) {
+       flg = true;
+     }
+   })
+   return flg;
+ }
+
+ getSelectedTags() {
+   this.selectedTags = [];
+   this.tagsArray.controls.forEach((control, i) => {
+     if (control.value) {
+       this.selectedTags.push(this.categories[i])
+     }
+   })
+  this.tagsError = this.selectedTags.length > 0 ? false : true;
+ }
+
+
+
  onSubmit() {
+   this.newPostForm.patchValue({userID: this.userID});
+   this.newPostForm.patchValue({categories: this.selectedTags});
+   this.newPostForm.patchValue({date: Date.now()});
+   this.newPostForm.get('categories').updateValueAndValidity();
+   this.newPostForm.get('userID').updateValueAndValidity();
+   this.newPostForm.get('date').updateValueAndValidity();
+   console.log(this.newPostForm.value);
    if(this.isEdit === true) {
      this.postService.storePostToEdit(this.newPostForm.value); //store new Form Post values to the post service
      console.log("submitting on edit")

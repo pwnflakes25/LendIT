@@ -16,6 +16,7 @@ export interface Post {
    userID: string;
    date: Date;
    tags: string[];
+   categories: string[];
 }
 
 @Injectable()
@@ -122,7 +123,7 @@ export class PostService {
        console.log(err)
      })
    } else {
-     console.log("You are not logged In to post");
+     console.log("You are not logged in to Post");
      return;
    }
  }

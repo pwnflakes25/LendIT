@@ -1,10 +1,9 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
-<div class="container">
-    <h1 class="well bigBox">New Post</h1>
-	<div class="col-lg-12 well bigBox" >
+<div class="container wrap overall">
+    <h1 class="well bigBox" style="padding: 1rem;">New Post</h1>
+	<div class="col-lg-12 well bigBox" style="padding: 1rem;" >
 	<div class="row bigBox">
 				<form [formGroup]="newPostForm" (ngSubmit)="onSubmit()">
 					<div class="col-sm-12">
@@ -56,8 +55,23 @@
 							</div>
 						</div>
 
+            <div class="form-group">
+              <label style="display: block; margin-bottom: 1rem;">Item Category</label>
+              <div class="form-check-inline" *ngFor="let category of tagsArray.controls; let i = index">
+                <mat-checkbox (change)="getSelectedTags()" [formControl]="category" id="inlineCheckbox{{i}}">{{categories[i]}}</mat-checkbox>
+              </div>
+            </div>
 
-					<button type="submit" class="btn btn-lg btn-info">Submit</button>
+
+            <div class="form-text custom-inline-text">
+               <small id="frHelp" *ngIf="tagsError && checkTagsTouched()">Choose at least one category</small>
+            </div>
+            <br>
+
+            <div class="">
+              	<button type="submit" class="btn btn-lg btn-info">Submit</button>
+            </div>
+
 					</div>
 				</form>
 				</div>

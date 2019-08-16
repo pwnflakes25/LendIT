@@ -14,6 +14,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -58,6 +59,7 @@ import { UserInfoThumbnailComponent } from './post/user-info-thumbnail/user-info
     FontAwesomeModule,
     MatButtonModule,
     MatSnackBarModule,
+    MatCheckboxModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,

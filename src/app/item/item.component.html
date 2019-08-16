@@ -6,8 +6,8 @@
 
   <div class="row">
     <!-- Image Space Below -->
-     <div class="col-md-8 col-s-12">
-       <img class="imageSetting" [src]="selectedPost.imagePath" alt="" style="min-width: 600px; max-height:400px;">
+     <div class="col-md-8 col-s-12 mainBox">
+       <img class="imageSetting" [src]="selectedPost.imagePath">
       <br>
        <div>
          <h1 id="price">{{selectedPost.price}} TL <span style="font-size: 20px;"> / {{selectedPost.priceDuration}}</span></h1>
@@ -21,10 +21,14 @@
      <!-- Portfolio Item Row -->
      <div class="col-md-4 col-s-12">
        <div>
-           <div class="card" style="width: 18rem;">
-             <img class="card-img-top" [src]="defaultDisplayPic" alt="Card image cap">
+           <div class="card userCard">
+             <div class="profile-userpic">
+					       <img [src]="defaultDisplayPic" class="img-responsive justify-content-center" style="margin-left: 25%;" alt="">
+
+            	</div>
+
              <div class="card-body">
-                 <h5 class="card-title">Lender's Detail</h5>
+                <h5 class="card-title justify-content-center" >Lender's Detail</h5>
                  <p class="card-text"></p>
              </div>
              <ul class="list-group list-group-flush">

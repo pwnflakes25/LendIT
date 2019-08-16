@@ -1,11 +1,4 @@
 
-@import url('https://fonts.googleapis.com/css?family=Numans');
-
-html,body{
-height: 100%;
-font-family: 'Numans', sans-serif;
-z-index: 100;
-}
 
 .container {
   font-family: 'Numans', sans-serif;
@@ -19,6 +12,10 @@ body {
 
 img {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+label {
+  font-weight: bold;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -44,7 +41,12 @@ img {
 .bigBox {
   background-color: #1F7EF8 ;
   color: white;
+}
 
+.overall {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
 }
 
 
