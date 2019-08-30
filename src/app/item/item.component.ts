@@ -12,7 +12,8 @@ import { map, concatMap} from "rxjs/operators";
   styleUrls: ['./item.component.css']
 })
 export class ItemComponent implements OnInit, OnDestroy{
-selectedPost : PostModel;
+selectedPost : any ;
+postSub: Subscription;
 settingUser: Subscription;
 defaultDisplayPic: any = "https://theimag.org/wp-content/uploads/2015/01/user-icon-png-person-user-profile-icon-20.png";
 id: number;
@@ -35,25 +36,32 @@ user = {
 
   this.route.params
   .subscribe((params) => {
-   this.id = +params['id'];
-   this.selectedPost = this.postService.getPost(this.id);
-   const ePromise = val => new Promise(resolve => resolve(val));
-   const check = this.userService.getUserDataById(this.selectedPost.userID).pipe(concatMap(val => ePromise(val)));
-   this.settingUser = check.subscribe(user => {
-     this.user.name = user[0].name;
-     this.user.userName = user[0].userName;
-     this.user.contact = user[0].contact;
-     this.user.email = user[0].email;
-     this.user.address = user[0].address;
-     if(user[0].imagePath) {
-       this.defaultDisplayPic = user[0].imagePath;
-     }
+   this.id = params['id'];
+
+
+     this.postSub = this.postService.getPostByID(this.id).subscribe(res => {
+     this.selectedPost = res;
+     const ePromise = val => new Promise(resolve => resolve(val));
+     const check = this.userService.getUserDataById(this.selectedPost.userID).pipe(concatMap(val => ePromise(val)));
+     this.settingUser = check.subscribe(user => {
+       this.user.name = user[0].name;
+       this.user.userName = user[0].userName;
+       this.user.contact = user[0].contact;
+       this.user.email = user[0].email;
+       this.user.address = user[0].address;
+       if(user[0].imagePath) {
+         this.defaultDisplayPic = user[0].imagePath;
+       }
+     })
    })
  })
 
 }
 
 ngOnDestroy() {
+  if(this.postSub) {
+    this.postSub.unsubscribe();
+  }
   if(this.settingUser) {
     this.settingUser.unsubscribe();
   }

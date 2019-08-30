@@ -4,7 +4,7 @@ import {Subject, Observable, BehaviorSubject, combineLatest, Subscription} from 
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../auth/auth.service";
 import {AngularFirestoreCollection, AngularFirestore, AngularFirestoreDocument} from "@angular/fire/firestore";
-import {switchMap} from "rxjs/operators"
+import {switchMap, map} from "rxjs/operators"
 import {Router} from "@angular/router"
 
 export interface Post {
@@ -24,6 +24,7 @@ export class PostService {
   //collection
   private postCollection: AngularFirestoreCollection<Post>;
   postList: Observable<PostModel[]>;
+  queriedPostList$: Observable<{}[]>;
   queriedPostRef$: Observable<any> //this will contain queried post ref
 
   //document
@@ -37,12 +38,16 @@ export class PostService {
   //filters for querying
   nameFilter$:  BehaviorSubject<string|null>;
   idFilter$: BehaviorSubject<string|null>;
+  category$ = new Subject<string>();
+
 
 
 
   constructor(private http: HttpClient, private authService: AuthService, private afs: AngularFirestore, private router: Router) {
     this.nameFilter$ = new BehaviorSubject(null);
     this.idFilter$ = new BehaviorSubject(null);
+
+    //below is a querying process used to find a specific post for updating
     this.queriedPostRef$ = combineLatest(
     this.nameFilter$,
     this.idFilter$
@@ -56,6 +61,22 @@ export class PostService {
       }).snapshotChanges()
     )
   );
+
+     this.queriedPostList$ = this.category$.pipe(
+        switchMap(category =>
+          this.afs.collection('postList', ref => ref.where('categories', 'array-contains', category))
+          .snapshotChanges().pipe(
+          map(actions => {
+          return actions.map(a => {
+            const data = a.payload.doc.data() as Post;
+            const id = a.payload.doc.id;
+            return { id, ...data };
+          })
+          })
+          )
+        )
+      );
+
     }
 
 
@@ -64,20 +85,47 @@ export class PostService {
     //   return this.posts;
     // }
 
+    // getPosts() {
+    //   this.postCollection = this.afs.collection<PostModel>('postList');
+    //   this.postList = this.postCollection.valueChanges();
+    //   this.postList.subscribe(values => {
+    //     for(let i=0; i < values.length; i++) {
+    //       this.posts[i] = values[i];
+    //     }
+    //   })
+    //   return this.postList;
+    // }
+
     getPosts() {
       this.postCollection = this.afs.collection<PostModel>('postList');
-      this.postList = this.postCollection.valueChanges();
-      this.postList.subscribe(values => {
-        for(let i=0; i < values.length; i++) {
-          this.posts[i] = values[i];
-        }
+      this.postList = this.postCollection.snapshotChanges().pipe(
+    map(actions => {
+    return actions.map(a => {
+        const data = a.payload.doc.data() as Post;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      });
       })
+      );
       return this.postList;
     }
 
     getPost(id: number) {
       return this.posts.slice()[id];
     }
+
+    getPostByID(id) {
+      this.postDoc = this.afs.doc<Post>('postList/' + id);
+       this.specificPost = this.postDoc.valueChanges();
+       return this.specificPost;
+    }
+
+     applyCategoryFilter(category) {
+       this.category$.next(category)
+       return this.queriedPostList$
+    }
+
+
 
 
 

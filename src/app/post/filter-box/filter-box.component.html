@@ -1,0 +1,20 @@
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-light blue-grey lighten-5">
+
+    <!-- Navbar brand -->
+    <mdb-navbar-brand><a class="navbar-brand" (click)="undoCat()" style="cursor: pointer">Categories</a></mdb-navbar-brand>
+
+    <!-- Collapsible content -->
+    <links>
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto" style="font-size: 12px;">
+          <li class="nav-item" *ngFor="let category of categories; let i = index" style="margin-right: 1rem; cursor: pointer">
+                <a class="nav-link waves-light" mdbWavesEffect (click)="selectedFilter(i)">{{category}}</a>
+            </li>
+        </ul>
+        <!-- Links -->
+    </links>
+    <!-- Collapsible content -->
+
+</mdb-navbar>
+<!--/.Navbar-->

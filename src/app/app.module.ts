@@ -15,6 +15,9 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { NavbarModule, WavesModule, ButtonsModule } from 'angular-bootstrap-md';
+
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,6 +36,7 @@ import {ProfileService} from "./profile/profile.service";
 import { ProfileEditComponent } from './profile/profile-edit/profile-edit.component';
 import {AuthGuardService} from "./auth/auth-guard.service";
 import { UserInfoThumbnailComponent } from './post/user-info-thumbnail/user-info-thumbnail.component';
+import { FilterBoxComponent } from './post/filter-box/filter-box.component';
 
 
 @NgModule({
@@ -47,7 +51,8 @@ import { UserInfoThumbnailComponent } from './post/user-info-thumbnail/user-info
     LoginComponent,
     ProfileComponent,
     ProfileEditComponent,
-    UserInfoThumbnailComponent
+    UserInfoThumbnailComponent,
+    FilterBoxComponent
   ],
   imports: [
     BrowserModule,
@@ -57,6 +62,9 @@ import { UserInfoThumbnailComponent } from './post/user-info-thumbnail/user-info
     MatTabsModule,
     NgbModule,
     FontAwesomeModule,
+    NavbarModule,
+    WavesModule,
+    ButtonsModule,
     MatButtonModule,
     MatSnackBarModule,
     MatCheckboxModule,

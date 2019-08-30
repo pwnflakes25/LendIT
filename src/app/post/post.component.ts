@@ -16,7 +16,9 @@ import {Router, Event, NavigationStart, NavigationEnd} from "@angular/router";
 export class PostComponent implements OnInit{
 posts: PostModel[] = [];
 posts$: Observable<PostModel[]>;
+categorizedPosts$: Observable<{}[]>;
 isLoading = true;
+isCategorized = false;
 
 
   constructor(
@@ -37,6 +39,20 @@ isLoading = true;
   }
 
   ngOnInit() {
+    this.posts$ = this.postService.getPosts()
+  }
+
+  categorizeList(category) {
+    console.log("Emission Detected")
+    this.isCategorized = true;
+    this.categorizedPosts$ = this.postService.applyCategoryFilter(category)
+    // this.categorizedPosts$.subscribe(res => {
+    //   console.log(res);
+    // })
+  }
+
+  removeFilter() {
+    this.isCategorized = false;
     this.posts$ = this.postService.getPosts()
   }
 
