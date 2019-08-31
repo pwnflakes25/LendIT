@@ -1,14 +1,4 @@
 
- @import url('https://fonts.googleapis.com/css?family=Numans');
-
-html,body{
-height: 100%;
-font-family: 'Numans', sans-serif;
-z-index: 100;
-}
-
-
-
 .Signupcard{
 height: 370px;
 margin-top: auto;
