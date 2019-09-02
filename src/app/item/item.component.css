@@ -1,7 +1,11 @@
 .imageSetting {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin-bottom: 1rem;
-  margin-right: 1rem;
+  margin-left: 2rem;
+  width: 40rem;
+  height: 20rem;
+}
+
+#itemImage {
+  padding: 1.5rem;
   width: 40rem;
   height: 20rem;
 }
@@ -12,22 +16,23 @@
 
 
 .profile-userpic img {
+  width: 150px;
+  height: 150px;
   align-items: center;
   float: none;
   margin: 0 auto;
-  width: 50%;
-  height: 50%;
   -webkit-border-radius: 50% !important;
   -moz-border-radius: 50% !important;
   border-radius: 50% !important;
 }
 
+
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
   .imageSetting {
-    width: 450px;
+    width: 420px;
     height: 450px;
-    margin-bottom: 3rem;
+    margin: auto;
   }
 
   .mainBox{

@@ -47,54 +47,42 @@ export class PostService {
     this.nameFilter$ = new BehaviorSubject(null);
     this.idFilter$ = new BehaviorSubject(null);
 
-    //below is a querying process used to find a specific post for updating
-    this.queriedPostRef$ = combineLatest(
-    this.nameFilter$,
-    this.idFilter$
-  ).pipe(
-    switchMap(([name, userID]) =>
-      this.afs.collection('postList', (ref) => {
-        let query : firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
-        if (name) { query = query.where('name', '==', name) };
-        if (userID) { query = query.where('userID', '==', userID) };
-        return query;
-      }).snapshotChanges()
-    )
-  );
+         //Below is for querying posts based on clicked category
+        this.queriedPostList$ = this.category$.pipe(
+           switchMap(category =>
+             this.afs.collection('postList', ref => ref.where('categories', 'array-contains', category))
+             .snapshotChanges().pipe(
+             map(actions => {
+             return actions.map(a => {
+               const data = a.payload.doc.data() as Post;
+               const id = a.payload.doc.id;
+               return { id, ...data };
+             })
+             })
+             )
+           )
+         );
 
-     this.queriedPostList$ = this.category$.pipe(
-        switchMap(category =>
-          this.afs.collection('postList', ref => ref.where('categories', 'array-contains', category))
-          .snapshotChanges().pipe(
-          map(actions => {
-          return actions.map(a => {
-            const data = a.payload.doc.data() as Post;
-            const id = a.payload.doc.id;
-            return { id, ...data };
-          })
-          })
-          )
-        )
-      );
+            //below is a querying process used to find a specific post for updating based on 2 parameter name and UserID
+            this.queriedPostRef$ = combineLatest(
+            this.nameFilter$,
+            this.idFilter$
+          ).pipe(
+            switchMap(([name, userID]) =>
+              this.afs.collection('postList', (ref) => {
+                let query : firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
+                if (name) { query = query.where('name', '==', name) };
+                if (userID) { query = query.where('userID', '==', userID) };
+                return query;
+              }).snapshotChanges()
+            )
+          );
 
     }
 
 
 //general post retrieval ============>
-    // getPosts() {
-    //   return this.posts;
-    // }
 
-    // getPosts() {
-    //   this.postCollection = this.afs.collection<PostModel>('postList');
-    //   this.postList = this.postCollection.valueChanges();
-    //   this.postList.subscribe(values => {
-    //     for(let i=0; i < values.length; i++) {
-    //       this.posts[i] = values[i];
-    //     }
-    //   })
-    //   return this.postList;
-    // }
 
     getPosts() {
       this.postCollection = this.afs.collection<PostModel>('postList');
@@ -122,9 +110,11 @@ export class PostService {
 
      applyCategoryFilter(category) {
        this.category$.next(category)
-       return this.queriedPostList$
     }
 
+    getQueriedList() {
+       return this.queriedPostList$
+    }
 
 
 

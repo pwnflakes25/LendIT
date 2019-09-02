@@ -6,15 +6,20 @@ import {PostMakerComponent} from "./post/post-maker/post-maker.component";
 import {SignupComponent} from "./auth/signup/signup.component";
 import {ProfileComponent} from "./profile/profile.component";
 import {AuthGuardService} from "./auth/auth-guard.service";
+import {FilteredPostsComponent} from "./post/filtered-posts/filtered-posts.component"
 
 const routes: Routes = [
 {
 path: "",
-component:PostComponent
+component: PostComponent,
 },
 {
   path: 'listing',
   component: PostComponent
+},
+{
+  path: 'listing/:category',
+  component: FilteredPostsComponent
 },
 {
   path: 'item/:id',

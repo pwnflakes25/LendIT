@@ -1,30 +1,37 @@
 <div class="container wrapper" *ngIf="selectedPost">
 
-  <div>
-    <h1 class="my-4">{{selectedPost.name}}</h1>
-  </div>
+  <!-- <div>
+    <h1 class="my-4" style="margin-top: 5rem;">{{selectedPost.name}}</h1>
+  </div> -->
 
-  <div class="row">
+  <div class="row" style="padding-top: 4rem;">
     <!-- Image Space Below -->
      <div class="col-md-8 col-s-12 mainBox">
-       <img class="imageSetting" [src]="selectedPost.imagePath">
-      <br>
-       <div>
-         <h1 id="price">{{selectedPost.price}} TL <span style="font-size: 20px;"> / {{selectedPost.priceDuration}}</span></h1>
-         <h3 class="my-3">Description</h3>
-         <p>{{selectedPost.description}}</p>
-         <ul style="list-style:none">
-         </ul>
-       </div>
+     <h1 class="my-4" style="margin-top: 5rem;">{{selectedPost.name}}</h1>
+     <mat-card style="margin-bottom: 2rem; padding-top: 2rem;">
+       <img mat-card-image [src]="selectedPost.imagePath"  class="imageSetting" alt="Photo of item">
+     </mat-card>
+
+     <mat-card>
+        <mat-card-header>
+            <mat-card-title id="price"><h3>{{selectedPost.price}} TL</h3></mat-card-title>
+            <mat-card-subtitle>/ {{selectedPost.priceDuration}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <h3 class="my-3">Description</h3>
+          <p>{{selectedPost.description}}</p>
+        </mat-card-content>
+     </mat-card>
      </div>
 
+
      <!-- Portfolio Item Row -->
-     <div class="col-md-4 col-s-12">
+     <div class="col-md-4 col-s-12" style="margin-bottom: 2rem; margin-top: 2rem;">
+     <h3 class="my-3">Lender's Detail</h3>
        <div>
            <div class="card userCard">
              <div class="profile-userpic">
 					       <img [src]="defaultDisplayPic" class="img-responsive justify-content-center" style="margin-left: 25%;" alt="">
-
             	</div>
 
              <div class="card-body">

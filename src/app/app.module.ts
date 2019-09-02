@@ -14,6 +14,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatCardModule} from '@angular/material/card';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { NavbarModule, WavesModule, ButtonsModule } from 'angular-bootstrap-md';
 
@@ -37,6 +38,7 @@ import { ProfileEditComponent } from './profile/profile-edit/profile-edit.compon
 import {AuthGuardService} from "./auth/auth-guard.service";
 import { UserInfoThumbnailComponent } from './post/user-info-thumbnail/user-info-thumbnail.component';
 import { FilterBoxComponent } from './post/filter-box/filter-box.component';
+import { FilteredPostsComponent } from './post/filtered-posts/filtered-posts.component';
 
 
 @NgModule({
@@ -52,7 +54,8 @@ import { FilterBoxComponent } from './post/filter-box/filter-box.component';
     ProfileComponent,
     ProfileEditComponent,
     UserInfoThumbnailComponent,
-    FilterBoxComponent
+    FilterBoxComponent,
+    FilteredPostsComponent
   ],
   imports: [
     BrowserModule,
@@ -67,6 +70,7 @@ import { FilterBoxComponent } from './post/filter-box/filter-box.component';
     ButtonsModule,
     MatButtonModule,
     MatSnackBarModule,
+    MatCardModule,
     MatCheckboxModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,

@@ -1,10 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('//fonts.googleapis.com/css?family=Numans');
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import url('//fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
 
 
  html,body{
  height: 100%;
- font-family: 'Numans', sans-serif;
+font-family: 'Roboto Condensed', sans-serif;
  z-index: 100;
  }

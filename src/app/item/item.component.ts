@@ -58,6 +58,8 @@ user = {
 
 }
 
+
+
 ngOnDestroy() {
   if(this.postSub) {
     this.postSub.unsubscribe();
