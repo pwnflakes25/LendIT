@@ -14,6 +14,14 @@
   width: 18rem;
 }
 
+.tagDisplay {
+  color: grey;
+}
+
+.map {
+  height: 10rem;
+}
+
 
 .profile-userpic img {
   width: 150px;
@@ -27,16 +35,21 @@
 }
 
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 600px) {
   /* For mobile phones: */
   .imageSetting {
-    width: 420px;
-    height: 450px;
+    width: 100%;
+    height: 95%;
     margin: auto;
   }
 
   .mainBox{
     margin-bottom: 5rem;
+  }
+
+  .tagDisplay {
+    font-size: 12px;
+    margin-left: 2rem;
   }
 
   .userCard{

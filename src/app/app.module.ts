@@ -17,6 +17,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatCardModule} from '@angular/material/card';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { NavbarModule, WavesModule, ButtonsModule } from 'angular-bootstrap-md';
+import { AgmCoreModule } from '@agm/core';
 
 
 
@@ -62,6 +63,9 @@ import { FilteredPostsComponent } from './post/filtered-posts/filtered-posts.com
     AppRoutingModule,
     HttpClientModule,
     MatDialogModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAQJu0c9jwXT9JG9LAmemmyKlYZvjgij8Y'
+    }),
     MatTabsModule,
     NgbModule,
     FontAwesomeModule,

@@ -6,12 +6,19 @@
 
   <div class="row" style="padding-top: 4rem;">
     <!-- Image Space Below -->
-     <div class="col-md-8 col-s-12 mainBox">
+     <div class="col-md-8 col-xs-12 mainBox">
      <h1 class="my-4" style="margin-top: 5rem;">{{selectedPost.name}}</h1>
+
+     <div class="row tagDisplay">
+       <p *ngIf="selectedPost.categories" style="color: grey; margin-right: 2rem;"><span><fa-icon [icon]="faTags" size="s" style="margin-right: 1rem; color: grey;"></fa-icon></span>{{selectedPost.categories}}</p>
+       <p *ngIf="displayDate !== 'Invalid Date'">Posted on: {{displayDate}}</p>
+     </div>
+
      <mat-card style="margin-bottom: 2rem; padding-top: 2rem;">
        <img mat-card-image [src]="selectedPost.imagePath"  class="imageSetting" alt="Photo of item">
      </mat-card>
 
+    <!-- main content card -->
      <mat-card>
         <mat-card-header>
             <mat-card-title id="price"><h3>{{selectedPost.price}} TL</h3></mat-card-title>
@@ -22,6 +29,18 @@
           <p>{{selectedPost.description}}</p>
         </mat-card-content>
      </mat-card>
+
+     <!-- location card -->
+     <mat-card style="margin-bottom: 2rem; margin-top: 1rem;">
+       <mat-card-header>
+         <mat-card-title><h3 class="my-3">Location</h3></mat-card-title>
+       </mat-card-header>
+       <mat-card-content>
+         <agm-map [latitude]="latitude" [longitude]="longitude" class="map">
+         </agm-map>
+       </mat-card-content>
+     </mat-card>
+
      </div>
 
 
@@ -44,10 +63,10 @@
                  <li class="list-group-item"><h5>User Address</h5> {{user.address}}</li>
                  <li class="list-group-item">Other Detail:  </li>
              </ul>
-             <div class="card-body">
+             <!-- <div class="card-body">
                  <a href="#" class="card-link">Card link</a>
                  <a href="#" class="card-link">Another link</a>
-             </div>
+             </div> -->
            </div>
        </div>
      </div>
