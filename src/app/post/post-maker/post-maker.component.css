@@ -18,6 +18,12 @@ label {
   font-weight: bold;
 }
 
+
+#map {
+  height: 20rem;
+  width: 40rem;
+}
+
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,

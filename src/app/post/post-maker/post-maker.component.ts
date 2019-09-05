@@ -8,6 +8,9 @@ import {FormGroup, FormControl, Validators, FormArray} from "@angular/forms";
 import {AuthService} from "../../auth/auth.service";
 import {Subscription} from 'rxjs';
 import {FormBuilder} from "@angular/forms";
+import {UserService} from "../../shared/user.service";
+import * as tt from "../../../assets/sdk/dist/maps.min.js";
+
 @Component({
   selector: 'app-post-maker',
   templateUrl: './post-maker.component.html',
@@ -26,6 +29,9 @@ export class PostMakerComponent implements OnInit, OnDestroy {
   categories: Array<String> = [ "Electronics", "Clothing", "Sport Equipments", "Gadgets", "Vehicles", "Office Items", "Work Tools", "School Supplies" ]
   selectedTags = [];
   tagsError: boolean = true;
+  mapOpen: boolean = false;
+  lngLatSelected: any;
+
 
   constructor(
       private http: HttpClient,
@@ -33,7 +39,8 @@ export class PostMakerComponent implements OnInit, OnDestroy {
       private router: Router,
       private authService: AuthService,
       private route: ActivatedRoute,
-      private _fb: FormBuilder
+      private _fb: FormBuilder,
+      private userService: UserService
     ) { }
 
   ngOnInit() {
@@ -46,7 +53,8 @@ export class PostMakerComponent implements OnInit, OnDestroy {
       'userID': new FormControl(null),
       'tags': this.addTagsControls(),
       'categories': new FormControl(null),
-      'date': new FormControl(null)
+      'date': new FormControl(null),
+      'location': new FormControl(null)
     });
     this.userID = this.authService.getUserID();
     this.route.params.subscribe((params) => {
@@ -65,6 +73,52 @@ export class PostMakerComponent implements OnInit, OnDestroy {
         })
       }
     })
+  }
+
+ //A
+  initializeMap() {
+    var lng;
+    var lat;
+    //get current User Position
+    this.mapOpen = true;
+    this.userService.getPosition().then(pos=>
+    {
+       console.log(`Your current Positon: ${pos.lng} ${pos.lat}`);
+       lng = pos.lng;
+       lat = pos.lat;
+
+       //Setting Map For Location
+       tt.setProductInfo('LendIT', '5.34.4');
+       var map = tt.map({
+              key: 'eMfXkmOFpCIe6stGFJeB6gAjsVmnY9fJ',
+              container: 'map',
+              style: 'tomtom://vector/1/basic-main',
+              center: [lng, lat],
+              zoom: 15
+          });
+
+          this.lngLatSelected = {
+            lng: lng,
+            lat: lat
+          }
+
+        //Setting map marker
+         map.setLanguage('en');
+          var marker =  new tt.Marker()
+        .setLngLat([lng, lat])
+        .addTo(map);
+
+        //registering map.onClick event for moving marker
+         map.on('click', (event) => {
+           console.log(event.lngLat);
+           marker.setLngLat(event.lngLat).addTo(map);
+           this.lngLatSelected = {
+             lng: event.lngLat.lng,
+             lat: event.lngLat.lat
+           }
+           console.log(this.lngLatSelected);
+         })
+    });
   }
 
  addTagsControls() {
@@ -108,6 +162,7 @@ export class PostMakerComponent implements OnInit, OnDestroy {
    this.newPostForm.patchValue({userID: this.userID});
    this.newPostForm.patchValue({categories: this.selectedTags});
    this.newPostForm.patchValue({date: Date.now()});
+   this.newPostForm.patchValue({location: this.lngLatSelected});
    this.newPostForm.get('categories').updateValueAndValidity();
    this.newPostForm.get('userID').updateValueAndValidity();
    this.newPostForm.get('date').updateValueAndValidity();

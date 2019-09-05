@@ -68,6 +68,19 @@
             </div>
             <br>
 
+            <div class="form-group">
+                <label style="margin-bottom: 1rem; cursor:pointer">Location</label>
+                <div style="margin-bottom: 1rem;" [ngSwitch]="mapOpen">
+                    <button mat-flat-button type="button" *ngSwitchCase="false" (click)="initializeMap()">Show Map</button>
+                    <button mat-flat-button type="button" *ngSwitchCase="true" (click)="mapOpen = false">Hide Map</button>
+                </div>
+
+                <div *ngIf="mapOpen">
+                  <p>Click On the map to move the marker to the desired location to be saved</p>
+                  <div id="map"></div>
+                </div>
+            </div>
+
             <div class="">
               	<button type="submit" class="btn btn-lg btn-info">Submit</button>
             </div>

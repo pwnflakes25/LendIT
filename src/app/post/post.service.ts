@@ -17,6 +17,7 @@ export interface Post {
    date: Date;
    tags: string[];
    categories: string[];
+   location: {};
 }
 
 @Injectable()

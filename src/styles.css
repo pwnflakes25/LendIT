@@ -8,4 +8,6 @@
  height: 100%;
 font-family: 'Roboto Condensed', sans-serif;
  z-index: 100;
+  margin:0;
+  padding:0;
  }

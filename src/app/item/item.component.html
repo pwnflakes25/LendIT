@@ -1,3 +1,4 @@
+
 <div class="container wrapper" *ngIf="selectedPost">
 
   <!-- <div>
@@ -33,15 +34,19 @@
      <!-- location card -->
      <mat-card style="margin-bottom: 2rem; margin-top: 1rem;">
        <mat-card-header>
-         <mat-card-title><h3 class="my-3">Location</h3></mat-card-title>
+         <mat-card-title><h3 class="my-3" style="cursor: pointer">Location</h3></mat-card-title>
        </mat-card-header>
        <mat-card-content>
-         <agm-map [latitude]="latitude" [longitude]="longitude" class="map">
-         </agm-map>
+         <div style="margin-bottom: 1rem;" [ngSwitch]="locationAvailable">
+             <button mat-flat-button type="button" *ngSwitchCase="true" (click)="initializeMap()">Show Map</button>
+             <p *ngSwitchCase="false">The Lender has not provided or has not decided to show any location </p>
+         </div>
+         <div id="map" class="map" *ngIf="locationAvailable"></div>
        </mat-card-content>
      </mat-card>
-
      </div>
+
+
 
 
      <!-- Portfolio Item Row -->
