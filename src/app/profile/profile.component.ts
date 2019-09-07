@@ -70,7 +70,9 @@ userPosts = [];
        this.user.email = result[0].email;
        this.user.address = result[0].address;
        this.user.imagePath = result[0].imagePath;
-       this.defaultDisplayPic = this.user.imagePath;
+       if(result[0].imagePath) {
+         this.defaultDisplayPic = this.user.imagePath;
+       }
      }
    })
    }
@@ -89,6 +91,7 @@ userPosts = [];
 
   onCancel() {
     this.edit = false;
+    this.refreshData();
   }
 
   onEditPost(index) {

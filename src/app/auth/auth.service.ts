@@ -19,7 +19,7 @@ userSub: Observable<any>;
 
   constructor(private router: Router, private afAuth: AngularFireAuth) {
 
-      this.userSub = this.afAuth.authState
+      this.userSub = this.afAuth.authState;
       this.afAuth.authState.subscribe(user => {
          if(user) {
            this.isAuthState = true;
@@ -50,7 +50,7 @@ getCurrentUserDetail() {
      return result = await firebase.auth().createUserWithEmailAndPassword(email, password)
      .then(cred => {
        return true;
-       this.router.navigate(["/profile"])
+       this.router.navigate(["/"])
      })
      .catch(function(error) {
       var errorCode = error.code;

@@ -1,5 +1,5 @@
 
-<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark lighten-5">
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark lighten-5 fixed-top scrolling-navbar">
 
     <!-- Navbar brand -->
     <mdb-navbar-brand><a class="navbar-brand" [routerLink]="['/']" style="cursor: pointer">LendIT</a></mdb-navbar-brand>
@@ -9,19 +9,19 @@
         <!-- Links -->
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['']">Home</a>
+            <a class="nav-link" routerLink='/'>Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/listing']">Listing</a>
+            <a class="nav-link" routerLink='/listing'>Listing</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" *ngIf="checkAuth()" [routerLink]="['/post/new']"><span><fa-icon [icon]="faPlusCircle" size="lg" class="headerIcon"></fa-icon></span> New Post</a>
+            <a class="nav-link" *ngIf="checkAuth()" routerLink='/post/new'><span><fa-icon [icon]="faPlusCircle" size="lg" class="headerIcon"></fa-icon></span> New Post</a>
           </li>
         </ul>
 
         <ul class="navbar-nav  ml-auto">
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/profile']" style="cursor:pointer" *ngIf="checkAuth()"><span><fa-icon [icon]="faUserCircle" size="lg" class="headerIcon"></fa-icon></span> My Profile</a>
+            <a class="nav-link" routerLink='/profile' style="cursor:pointer" *ngIf="checkAuth()"><span><fa-icon [icon]="faUserCircle" size="lg" class="headerIcon"></fa-icon></span> My Profile</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" (click)="onLogin()" style="cursor:pointer" *ngIf="!checkAuth()" >Login</a>

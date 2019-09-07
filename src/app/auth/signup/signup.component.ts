@@ -23,7 +23,6 @@ export class SignupComponent implements OnInit {
     if(signup) {
       this.openSnackBar("Sign Up Successful!", "Dismiss");
       this.successEvent.emit();
-      this.router.navigate(["/profile"])
     } else {
       this.openSnackBar("Oops! Something went wrong", "Dismiss");
     }

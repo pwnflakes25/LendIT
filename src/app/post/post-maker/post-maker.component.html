@@ -14,10 +14,6 @@
                 <div class="card bg-dark text-white">
                   <input type="file" #filePicker style="display: none;" (change)="onFileSelected($event)" name="image" />
                   <img class="card-img img-responsive" [src]="imageDisplay" alt="Card image" style="cursor:pointer" (click)="filePicker.click()">
-                  <!-- <div class="card-img-overlay" *ngIf="imageActive === false" (mouseenter)="onHover($event)">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Add Image to give your audience a better idea of your item</p>
-                  </div> -->
                 </div>
 							</div>
 						</div>
