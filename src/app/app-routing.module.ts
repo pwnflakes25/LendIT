@@ -27,16 +27,13 @@ component: PostComponent,
 },
 {
   path: 'post/:edit',
-  component: PostMakerComponent
+  component: PostMakerComponent,
+  canActivate: [AuthGuardService]
 },
 {
   path: 'profile',
   component: ProfileComponent,
-  canActivate: [AuthGuardService],
-},
-{
-  path: 'editPost',
-  component: PostMakerComponent
+  canActivate: [AuthGuardService]
 }
 ];
 

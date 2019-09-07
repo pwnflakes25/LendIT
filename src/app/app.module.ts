@@ -25,7 +25,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { PostComponent } from './post/post.component';
 import {PostService} from "./post/post.service";
-import { PostListComponent } from './post/post-list/post-list.component';
 import { ItemComponent } from './item/item.component';
 import { PostMakerComponent } from './post/post-maker/post-maker.component';
 import { SignupComponent } from './auth/signup/signup.component';
@@ -36,7 +35,6 @@ import { ProfileComponent } from './profile/profile.component';
 import {ProfileService} from "./profile/profile.service";
 import { ProfileEditComponent } from './profile/profile-edit/profile-edit.component';
 import {AuthGuardService} from "./auth/auth-guard.service";
-import { UserInfoThumbnailComponent } from './post/user-info-thumbnail/user-info-thumbnail.component';
 import { FilterBoxComponent } from './post/filter-box/filter-box.component';
 import { FilteredPostsComponent } from './post/filtered-posts/filtered-posts.component';
 
@@ -46,14 +44,12 @@ import { FilteredPostsComponent } from './post/filtered-posts/filtered-posts.com
     AppComponent,
     HeaderComponent,
     PostComponent,
-    PostListComponent,
     ItemComponent,
     PostMakerComponent,
     SignupComponent,
     LoginComponent,
     ProfileComponent,
     ProfileEditComponent,
-    UserInfoThumbnailComponent,
     FilterBoxComponent,
     FilteredPostsComponent
   ],

@@ -1,3 +1,9 @@
-.headerIcon {
+
+:host ::ng-deep .navbar {
+  background-color: #1F7EF8 !important;
+  color: white;
+}
+
+:host ::ng-deep .navbar-nav, .nav-item, .nav-link {
   color: white;
 }

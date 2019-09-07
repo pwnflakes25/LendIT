@@ -55,6 +55,11 @@ body {
     margin: auto;
   }
 
+  #map {
+    width: 100%;
+    margin: auto;
+  }
+
   .mainBox{
     margin-bottom: 5rem;
   }
@@ -77,18 +82,3 @@ body {
 #price {
   color: green;
 }
-
-.grid-container {
-  display: grid;
-  grid-template-columns: 0.3fr 2.6fr 1.5fr 0.4fr;
-  grid-template-rows: 0.3fr 1.7fr 0.2fr 1.8fr;
-  grid-template-areas: ". . . ." ". Image Card-Details ." ". . . ." ". Item-Details . .";
-}
-
-.Image { grid-area: Image; }
-
-.Card-Details { grid-area: Card-Details; }
-
-.Item-Details { grid-area: Item-Details; }
-
-.Title { grid-area: Title; }
