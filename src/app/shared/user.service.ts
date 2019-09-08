@@ -90,7 +90,7 @@ updateUserData(ref, userData: UserModel) {
              err => {
                alert("Location sharing is turned off or this browser/OS does not support it")
              },
-             { enableHighAccuracy: false, timeout: 5000 }
+             { enableHighAccuracy: true, maximumAge: 100, timeout: 60000 }
         );
      });
    }
