@@ -84,12 +84,14 @@ updateUserData(ref, userData: UserModel) {
 
   getPosition(): Promise<any>  {
      return new Promise((resolve, reject) => {
-       navigator.geolocation.getCurrentPosition(resp => {
-           resolve({lng: resp.coords.longitude, lat: resp.coords.latitude});
-         },
-         err => {
-           alert("Location sharing is turned off or this browser/OS does not support it")
-         });
+           navigator.geolocation.getCurrentPosition((resp) => {
+               resolve({lng: resp.coords.longitude, lat: resp.coords.latitude});
+             },
+             err => {
+               alert("Location sharing is turned off or this browser/OS does not support it")
+             },
+             { enableHighAccuracy: false, timeout: 5000 }
+        );
      });
    }
 
