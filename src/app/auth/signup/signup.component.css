@@ -7,26 +7,30 @@ width: 400px;
 background-color: #1F7EF8;
 }
 
-.social_icon span{
-font-size: 60px;
-margin-left: 10px;
-color: #FFC312;
+@media only screen and (max-width: 600px) {
+  /* For mobile phones: */
+   .Signupcard {
+     width: 100%;
+   }
+
+   .headerTitle {
+     font-size: 20px;
+   }
+
+   .login_btn{
+   color: black;
+   background-color: #FFC312;
+   width: 100%;
+   margin-top: 2rem;
+   }
+
 }
 
-.social_icon span:hover{
-color: white;
-cursor: pointer;
-}
 
 .card-header h3{
 color: white;
 }
 
-.social_icon{
-position: absolute;
-right: 20px;
-top: -10px;
-}
 
 .input-group-prepend span{
 width: 50px;

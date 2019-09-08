@@ -24,13 +24,13 @@
             <a class="nav-link" routerLink='/profile' style="cursor:pointer" *ngIf="checkAuth()"><span><fa-icon [icon]="faUserCircle" size="lg" class="headerIcon"></fa-icon></span> My Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" (click)="onLogin()" style="cursor:pointer" *ngIf="!checkAuth()" >Login</a>
+            <a class="nav-link" (click)="onLogin()"  routerLink="" style="cursor:pointer" *ngIf="!checkAuth()" >Login</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" (click)="onLogout()" style="cursor:pointer"  *ngIf="checkAuth()">Logout</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" (click)="onSignup()" style="cursor:pointer" *ngIf="!checkAuth()" >Register</a>
+            <a class="nav-link" (click)="onSignup()"  routerLink="" style="cursor:pointer" *ngIf="!checkAuth()" >Register</a>
           </li>
         </ul>
         <!-- Links -->

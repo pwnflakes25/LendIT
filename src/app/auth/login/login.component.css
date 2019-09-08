@@ -7,6 +7,39 @@ width: 400px;
 background-color: #1F7EF8;
 }
 
+
+@media only screen and (max-width: 600px) {
+  /* For mobile phones: */
+   .logIncard {
+     width: 100%;
+   }
+
+
+   .social_icon span{
+   font-size: 30px;
+   margin-left: 1rem;
+   }
+
+   .headerTitle {
+     font-size: 20px;
+   }
+
+   .login_btn{
+   color: black;
+   background-color: #FFC312;
+   width: 100%;
+   margin-top: 2rem;
+   }
+
+
+   .social_icon{
+   position: absolute;
+   margin-bottom: 1rem;
+   }
+
+
+}
+
 .social_icon span{
 font-size: 60px;
 margin-left: 10px;
