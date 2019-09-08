@@ -30,7 +30,9 @@ export class PostMakerComponent implements OnInit, OnDestroy {
   selectedTags = [];
   tagsError: boolean = true;
   mapOpen: boolean = false;
-  lngLatSelected: any;
+  lngLatSelected: any = null;
+  lng;
+  lat;
 
 
   constructor(
@@ -77,8 +79,9 @@ export class PostMakerComponent implements OnInit, OnDestroy {
 
  //A
   initializeMap() {
-    var lng;
-    var lat;
+    var lng = null;
+    var lat = null;
+
     //get current User Position
     this.mapOpen = true;
     this.userService.getPosition().then(pos=>
@@ -86,27 +89,28 @@ export class PostMakerComponent implements OnInit, OnDestroy {
        console.log(`Your current Positon: ${pos.lng} ${pos.lat}`);
        lng = pos.lng;
        lat = pos.lat;
-
-       //Setting Map For Location
        tt.setProductInfo('LendIT', '5.34.4');
-       var map = tt.map({
-              key: 'eMfXkmOFpCIe6stGFJeB6gAjsVmnY9fJ',
-              container: 'map',
-              style: 'tomtom://vector/1/basic-main',
-              center: [lng, lat],
-              zoom: 15
-          });
 
-          this.lngLatSelected = {
+         //Setting Map For Location
+         let map = tt.map({
+                key: 'eMfXkmOFpCIe6stGFJeB6gAjsVmnY9fJ',
+                container: 'map',
+                style: 'tomtom://vector/1/basic-main',
+                center: [lng, lat],
+                zoom: 15
+            });
+
+            //Setting map marker
+             map.setLanguage('en');
+              var marker =  new tt.Marker()
+            .setLngLat([lng, lat])
+            .addTo(map);
+
+      this.lngLatSelected = {
             lng: lng,
             lat: lat
           }
 
-        //Setting map marker
-         map.setLanguage('en');
-          var marker =  new tt.Marker()
-        .setLngLat([lng, lat])
-        .addTo(map);
 
         //registering map.onClick event for moving marker
          map.on('click', (event) => {
@@ -118,7 +122,10 @@ export class PostMakerComponent implements OnInit, OnDestroy {
            }
            console.log(this.lngLatSelected);
          })
-    });
+    })
+    .catch(err => {
+      this.lngLatSelected = null;
+    })
   }
 
  addTagsControls() {

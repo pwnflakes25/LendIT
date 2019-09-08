@@ -88,7 +88,7 @@ updateUserData(ref, userData: UserModel) {
            resolve({lng: resp.coords.longitude, lat: resp.coords.latitude});
          },
          err => {
-           reject(err);
+           alert("Location sharing is turned off or this browser/OS does not support it")
          });
      });
    }
