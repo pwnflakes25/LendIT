@@ -20,6 +20,11 @@
   height: auto;
   width: auto;
   margin-top: 1rem;
+  transition: transform 0.5s;
+}
+
+#postCard:hover {
+  transform: scale(1.05);
 }
 
 .content {

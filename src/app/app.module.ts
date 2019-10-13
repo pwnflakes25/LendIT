@@ -16,7 +16,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatCardModule} from '@angular/material/card';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import { NavbarModule, WavesModule, ButtonsModule } from 'angular-bootstrap-md';
+import { NavbarModule, WavesModule, ButtonsModule, CarouselModule} from 'angular-bootstrap-md';
 
 
 
@@ -37,6 +37,7 @@ import { ProfileEditComponent } from './profile/profile-edit/profile-edit.compon
 import {AuthGuardService} from "./auth/auth-guard.service";
 import { FilterBoxComponent } from './post/filter-box/filter-box.component';
 import { FilteredPostsComponent } from './post/filtered-posts/filtered-posts.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { FilteredPostsComponent } from './post/filtered-posts/filtered-posts.com
     ProfileComponent,
     ProfileEditComponent,
     FilterBoxComponent,
-    FilteredPostsComponent
+    FilteredPostsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -65,6 +67,7 @@ import { FilteredPostsComponent } from './post/filtered-posts/filtered-posts.com
     WavesModule,
     ButtonsModule,
     MatButtonModule,
+    CarouselModule,
     MatSnackBarModule,
     MatCardModule,
     MatCheckboxModule,

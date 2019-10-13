@@ -1,0 +1,16 @@
+.iconBox {
+  margin-left: auto;
+  margin-top: 1rem;
+  text-align: center;
+  transition: transform 0.5s;
+  cursor: pointer;
+}
+
+.iconsContainer {
+  margin-top: 2rem;
+  margin-left: 1rem;
+}
+
+.iconBox:hover {
+  transform: scale(1.5);
+}

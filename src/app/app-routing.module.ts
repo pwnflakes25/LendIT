@@ -7,11 +7,12 @@ import {SignupComponent} from "./auth/signup/signup.component";
 import {ProfileComponent} from "./profile/profile.component";
 import {AuthGuardService} from "./auth/auth-guard.service";
 import {FilteredPostsComponent} from "./post/filtered-posts/filtered-posts.component"
+import {HomeComponent} from "./home/home.component";
 
 const routes: Routes = [
 {
 path: "",
-component: PostComponent,
+component: HomeComponent,
 },
 {
   path: 'listing',
