@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener} from '@angular/core';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faTv, faTshirt, faTableTennis, faMobile, faBicycle, faBriefcase, faTools, faPencilRuler, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
@@ -9,6 +9,7 @@ import { faTv, faTshirt, faTableTennis, faMobile, faBicycle, faBriefcase, faTool
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  public innerWidth: any;
   categories: Array<String> = [ "Electronics", "Clothing", "Sport Equipments", "Gadgets", "Vehicles", "Office Items", "Work Tools", "School Supplies" ];
   faTv = faTv;
   faTshirt = faTshirt;
@@ -19,10 +20,29 @@ export class HomeComponent implements OnInit {
   faTools = faTools;
   faPencilRuler = faPencilRuler;
   faChevronDown = faChevronDown;
+  iconSize;
+
 
   constructor() {}
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+  this.innerWidth = window.innerWidth;
+      if (this.innerWidth <= 700) {
+        this.iconSize = "3x";
+      } else {
+        this.iconSize = "5x";
+      }
+  console.log(this.iconSize);
+  }
+
   ngOnInit() {
+    this.innerWidth = window.innerWidth;
+    if (this.innerWidth <= 700) {
+      this.iconSize = "3x";
+    } else {
+      this.iconSize = "5x";
+    }
   }
 
   toCategoryBox() {
