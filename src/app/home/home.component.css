@@ -1,8 +1,7 @@
 .iconBox {
-  margin-left: auto;
   margin-top: 1rem;
-  text-align: center;
   width: auto;
+  text-align: center;
   transition: transform 0.5s;
   cursor: pointer;
 }
@@ -22,10 +21,16 @@
  font-size: 4rem;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 768px) {
   .iconText{
      font-size: 15px;
   }
+
+  .iconBox {
+    flex-grow:1;
+    flex-basis: 0;
+  }
+
 
   .carouselImage, .carouselImage img {
     height: 40rem;

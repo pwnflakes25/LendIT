@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(event) {
   this.innerWidth = window.innerWidth;
-      if (this.innerWidth <= 700) {
+      if (this.innerWidth <= 768) {
         this.iconSize = "3x";
       } else {
         this.iconSize = "5x";
