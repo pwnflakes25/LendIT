@@ -9,13 +9,13 @@
     <div class="col-md-4 col-xs-6 col-lg-4 h-100" *ngFor="let post of (posts$ | async); let i = index">
 
       <div style="margin-right: 1rem; margin-bottom: 2rem; padding: 0px;" id="postCard" >
-        <img class="card-img-top" style="max-height: 10rem; width: 100%" [src]="post.imagePath" alt="Card image cap">
-        <div class="card card-body flex-fill">
-          <h5 class="card-title">{{post.name}}</h5>
+        <img class="card-img-top" id="cardImage" style="max-height: 10rem; width: 100%" [src]="post.imagePath" alt="Card image cap">
+        <div class="card card-body border-light flex-fill">
+          <p class="card-title" style="font-weight: bold;">{{post.name}}</p>
           <p class="card-text" style="color: green">
            {{post.price}} TL
          </p>
-         <p class="card-text">{{post.description}}</p>
+         <p class="card-text" style="font-weight: lighter; color: gray;">{{post.description}}</p>
          <button type="button" name="button" class="btn btn-primary" [routerLink]="['/item/' + post.id]">Borrow This</button>
         </div>
       </div>

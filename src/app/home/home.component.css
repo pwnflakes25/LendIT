@@ -12,13 +12,24 @@
   width: auto;
 }
 
+.jumbotron {
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+  background-color: white;
+}
+
 .iconBox:hover {
   transform: scale(1.5);
 }
 
 #carousel-title {
  margin-bottom: 2.5rem;
- font-size: 4rem;
+ font-size: 5rem;
+ font-weight: bolder;
+ text-shadow: 0 4px 6px 0 black;
+}
+
+.carouselImage, .carouselImage img {
+  height: 40rem;
 }
 
 @media only screen and (max-width: 768px) {

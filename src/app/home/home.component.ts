@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
   }
 
   toCategoryBox() {
-    document.getElementById("jumbotron").scrollIntoView({ behavior: 'smooth' });
+    document.getElementById("jumbotron").scrollIntoView({ behavior: 'smooth', block: 'center' });
     console.log("Scroll")
   }
 
