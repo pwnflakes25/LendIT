@@ -23,6 +23,10 @@
   width: auto;
 }
 
+.iconsContainer mat-grid-tile fa-icon {
+  display: inline-block;
+}
+
 .jumbotron {
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
   background-color: white;
@@ -46,9 +50,13 @@
      font-size: 15px;
   }
 
+  .iconsContainer{
+    padding-left: 1rem;
+  }
 
   .iconBox {
-    margin-left: 0.5rem;
+    margin-left: 0.8rem;
+    max-width: 5rem;
   }
 
 
