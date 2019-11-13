@@ -8,6 +8,11 @@
   width: auto;
   transition: transform 0.5s;
   border: none;
+
+}
+
+.card-body {
+  background-color: #f2f2f2;
 }
 
 #cardImage {

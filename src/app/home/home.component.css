@@ -6,9 +6,20 @@
   cursor: pointer;
 }
 
+.iconBox:hover {
+  transform: scale(1.5);
+}
+
+.secondPlane {
+  background-image: url(/assets/images/cityBackground.png);
+  background-repeat: none;
+  background-size: contain;
+  background-position: bottom center;
+  padding-bottom: 2rem;
+}
+
 .iconsContainer {
   margin-top: 2rem;
-  margin-left: 1rem;
   width: auto;
 }
 
@@ -17,19 +28,17 @@
   background-color: white;
 }
 
-.iconBox:hover {
-  transform: scale(1.5);
-}
+
 
 #carousel-title {
  margin-bottom: 2.5rem;
  font-size: 5rem;
- font-weight: bolder;
- text-shadow: 0 4px 6px 0 black;
+ font-weight: bold;
 }
 
 .carouselImage, .carouselImage img {
   height: 40rem;
+  shadow: 0 4px 6px 0 black;
 }
 
 @media only screen and (max-width: 768px) {
@@ -37,13 +46,17 @@
      font-size: 15px;
   }
 
+
   .iconBox {
-    flex-grow:1;
-    flex-basis: 0;
+    margin-left: 0.5rem;
   }
 
 
   .carouselImage, .carouselImage img {
     height: 40rem;
+  }
+
+  #carousel-title {
+     font-size: 4rem;
   }
 }
