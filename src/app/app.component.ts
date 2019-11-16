@@ -1,5 +1,5 @@
 import { Component, OnInit} from '@angular/core';
-import {sliderAnimation} from "./animation";
+import {slider} from "./animation";
 import {RouterOutlet} from "@angular/router";
 
 
@@ -8,7 +8,7 @@ import {RouterOutlet} from "@angular/router";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   animations: [
-    sliderAnimation()
+    slider
   ]
 })
 
