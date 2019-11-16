@@ -10,7 +10,7 @@ import {
 } from "@angular/animations";
 
 
-export const slider =
+ const slider =
   trigger('routeAnimations', [
     transition('isRight => isLeft', slideTo('left')),
     transition('isLeft => isRight', slideTo('right')),
@@ -18,7 +18,7 @@ export const slider =
     transition('isMoreRight => *', slideTo('left')),
   ])
 
-export function slideTo(direction) {
+function slideTo(direction) {
     const optional = {optional: true};
     return [
       query(':enter, :leave', [
@@ -42,3 +42,5 @@ export function slideTo(direction) {
       ]),
     ];
   }
+
+  export {slider, slideTo};
