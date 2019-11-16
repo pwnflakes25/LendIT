@@ -24,6 +24,10 @@
   background-color: #d8d8d8;
 }
 
+.card-body {
+  background-color: #f2f2f2;
+}
+
 #postCard:hover {
   transform: scale(1.05);
 }

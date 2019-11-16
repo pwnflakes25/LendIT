@@ -13,18 +13,22 @@ const routes: Routes = [
 {
 path: "",
 component: HomeComponent,
+data: {animation: 'isLeft'}
 },
 {
   path: 'listing',
-  component: PostComponent
+  component: PostComponent,
+  data: {animation: 'isRight'}
 },
 {
   path: 'listing/:category',
-  component: FilteredPostsComponent
+  component: FilteredPostsComponent,
+  data: {animation: 'isMoreRight'}
 },
 {
   path: 'item/:id',
-  component: ItemComponent
+  component: ItemComponent,
+  data: {animation: 'isMoreRight'}
 },
 {
   path: 'post/:edit',
