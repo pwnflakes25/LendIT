@@ -6,6 +6,7 @@ import {firebaseConfig} from "../../environments/firebase.config";
 import {Subscription, Observable} from "rxjs";
 import {Router} from "@angular/router";
 import {AngularFireAuth} from "@angular/fire/auth";
+import { auth } from 'firebase/app';
 
 
 @Injectable({
@@ -72,6 +73,17 @@ getCurrentUserDetail() {
           var errorMessage = error.message;
           return [false, errorMessage];
       });
+   }
+
+   async logInUserWithGoogle() {
+     let result;
+     return result = await this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider()).then(cred => {
+       return [true, "Loggen In Successfully"];
+     }).catch(function(error) {
+       let errorCode = error.code;
+       let errorMessage = error.message;
+       return [false, errorMessage];
+     })
    }
 
    onSignOut() {

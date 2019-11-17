@@ -22,6 +22,18 @@ export class LoginComponent implements OnInit {
     this.openEvent.emit()
   }
 
+  onLogInWithGoogle() {
+    let login = this.authService.logInUserWithGoogle().then(res => {
+      if(res[0]) {
+        this.openSnackBar("Logged In Successfully", "dismiss");
+        this.successEvent.emit();
+      } else {
+        this.openSnackBar(res[1], "dismiss");
+        return;
+      }
+    })
+  }
+
   onSubmit(form: NgForm) {
    let login = this.authService.logInUser(form.value.email, form.value.password).then(res => {
      if (res[0]) {

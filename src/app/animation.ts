@@ -25,10 +25,10 @@ import {
   //      ]),
   //      group([
   //        query(':leave', [
-  //          animate('800ms ease', style({[direction]: '100%'}))
+  //          animate('400ms ease', style({[direction]: '100%'}))
   //        ], optional),
   //        query(':enter', [
-  //          animate('800ms ease', style({[direction]: '0%'}))
+  //          animate('400ms ease', style({[direction]: '0%'}))
   //        ])
   //      ]),
   //    ];
@@ -49,10 +49,10 @@ const optional = {optional: true};
         ]),
         group([
           query(':leave', [
-            animate('800ms ease', style({right: '100%'}))
+            animate('400ms ease', style({right: '100%'}))
           ], optional),
           query(':enter', [
-            animate('800ms ease', style({right: '0%'}))
+            animate('400ms ease', style({right: '0%'}))
           ])
         ]),
       ];
@@ -72,10 +72,10 @@ const optional = {optional: true};
         ]),
         group([
           query(':leave', [
-            animate('800ms ease', style({left: '100%'}))
+            animate('400ms ease', style({left: '100%'}))
           ], optional),
           query(':enter', [
-            animate('800ms ease', style({left: '0%'}))
+            animate('400ms ease', style({left: '0%'}))
           ])
         ]),
       ];
