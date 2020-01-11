@@ -1,0 +1,7 @@
+:host ::ng-deep .navbar-link {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 23px;
+  color: #626262;
+}
